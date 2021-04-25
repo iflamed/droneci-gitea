@@ -1,4 +1,4 @@
-# Droneci-Gitea devops 基础服务
+# DroneCI-Gitea devops 基础服务
 使用 docker-compose.yml 文件部署 DroneCI 和 Gitea 服务
 
 ## Docker 环境变量说明
