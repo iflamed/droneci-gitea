@@ -1,0 +1,26 @@
+version: "3.3"
+networks:
+  dronenet:
+services:
+  gitea:
+    image: gitea/gitea:latest
+    container_name: gitea
+    environment:
+      - TZ=Asia/Shanghai
+      - DB_TYPE=mysql
+      - DB_HOST=${DB_HOST}:${DB_PORT}
+      - DB_NAME=${GITEA_DB_NAME}
+      - DB_USER=${GITEA_DB_USER}
+      - DB_PASSWD=${GITEA_DB_PASSWD}
+      - DISABLE_REGISTRATION=true
+      - USER_UID=${GITEA_USER_UID}
+      - USER_GID=${GITEA_USER_GID}
+    volumes:
+      - ./data/gitea:/data
+      - /home/git/.ssh/:/data/git/.ssh
+    restart: always
+    networks:
+      - dronenet
+    ports:
+      - "2222:22"
+      - "1280:3000"
